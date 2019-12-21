@@ -1,0 +1,12 @@
+<h1>Editing Book</h1>
+
+<%= form_for(@book) do |f|%>
+<%= render 'layouts/error_messages', model: f.object %>
+<p>Titie</p>
+<%= f.text_field :title %>
+
+<p>Opinion</p>
+<%= f.text_area :body %>
+<%= f.submit "Update Book" %>
+<% end %>
+

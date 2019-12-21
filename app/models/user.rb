@@ -9,5 +9,7 @@ class User < ApplicationRecord
   def email_required?
   	false
   end
-  
+
+  has_many :books, dependent: :destroy
+  attachment :profile_image
 end

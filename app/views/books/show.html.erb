@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<%= render 'books/sidebar', book: Book.new %>
+
+
+<!-- 投稿一覧 -->
+<div class="col-lg-8">
+	<table class="table table-striped">
+<h2>Book detail</h2>
+	<div class="user-name">
+		<%= @book.user.name %>
+	</div>
+
+	<div class="book-title">
+		<p>Title: <%= @book.title %></p>
+	</div>
+
+
+	<div class="book-body">
+		<p>Opinion: <%= @book.body %></p>
+ 	</div>
+
+</table>
+</div>
+</html>
+

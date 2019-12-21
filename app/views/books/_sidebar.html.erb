@@ -1,0 +1,46 @@
+<div class="User-info">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-4">
+	<h2>User info</h2>
+		<!--%= attachment_image_tag current_user, :image, :fill, 150, 150, format: 'jpeg' % -->
+
+		<table>
+			<tbody>
+				<tr>
+					<td>name</td>
+					<td><%= current_user.name %></td>
+				</tr>
+				<tr>
+					<td>introduction</td>
+					<td><!--%= current_user.introduction %--></td>
+				</tr>
+			</tbody>
+		</table>
+
+<%= link_to(edit_user_path(current_user.id), class:  "btn btn-default") do %>
+		<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+		<% end %>
+
+<!-- 暫定ログアウトボタン -->
+  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+
+	<div class="new-book"> <!-- 新規投稿部分 -->
+	<h3>New book</h3>
+	<%= form_for(@book) do |f| %>
+	<!-- render 'layouts/error_messages', model: f.object -->
+
+ 	<h4>Title</h4>
+ 	<%= f.text_field :title %>
+
+ 	<h4>Opinion</h4>
+ 	<%= f.text_area :body %>
+
+ 	<br><%= f.submit 'Create Book' , class: "btn btn-primary" %></br>
+
+	<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
