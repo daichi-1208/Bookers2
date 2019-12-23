@@ -1,27 +1,50 @@
-<!DOCTYPE html>
-<html>
+<div class="container">
+	<div class="row">
 
-<%= render 'books/sidebar', book: Book.new %>
+<% if flash[:notice] %>
+  <p><%= flash[:notice] %></p>
+<% end %>
 
+<%= render 'books/sidebar', book: Book.new, side_user: @side_user %>
 
 <!-- 投稿一覧 -->
-<div class="col-lg-8">
-	<table class="table table-striped">
-<h2>Book detail</h2>
-	<div class="user-name">
-		<%= @book.user.name %>
-	</div>
+	<div class="col-xs-9">
+		<h2>Book detail</h2>
+		<table class="table">
+			<tbody>
+				<tr>
+					<td><%= link_to user_path(@book.user) do %>
+						<%= attachment_image_tag @book.user, :profile_image, :fill, 50, 50, fallback: 'no-image-icon.jpg' %><br>
+						<%= @book.user.name %><% end %>
+					</td>
 
-	<div class="book-title">
-		<p>Title: <%= @book.title %></p>
-	</div>
+			  		<td><%= link_to @book.title, book_path(@book) %></td>
+			  		<td><%= @book.body %></td>
 
+			  	<% if current_user.id == @book.user_id %>
+				<td>
+					<h4>
+						<div class="label label-success"><%= link_to "Edit", edit_book_path(@book.id) %>
+						</div>
+					</h4>
+				</td>
+				<td>
+					<h4>
+						<%= link_to "Destroy", book_path(@book), method: :delete, data: { confirm: '本当に消しますか？' }, class: "label label-danger" %>
+					</h4>
+				</td>
+			 <% else %>
+				<td></td>
+				<td></td>
 
-	<div class="book-body">
-		<p>Opinion: <%= @book.body %></p>
- 	</div>
-
-</table>
+			 <% end %>
+			</tr>
+		</tbody>
+	</table>
+</div>
+</div>
 </div>
 </html>
+
+
 

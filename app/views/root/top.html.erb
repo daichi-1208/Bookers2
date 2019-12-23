@@ -1,5 +1,6 @@
-<!doctype html>
-<html>
+<% if flash[:notice] %>
+  <p><%= flash[:notice] %></p>
+<% end %>
 
 <h1>welcome to bookers !!</h1>
 
@@ -12,8 +13,8 @@
 
 <div class="button">
    <p>
-	<%= link_to 'Login', new_user_session_path, class: "btn btn-primary" %><br>
-	<%= link_to 'Sing up', new_user_registration_path, class: "btn btn-success" %><br>
+	<%= link_to 'Log in', new_user_session_path, class: "btn btn-primary" %><br>
+	<%= link_to 'Sign up', new_user_registration_path, class: "btn btn-success" %><br>
    </p>
 </div>
 
